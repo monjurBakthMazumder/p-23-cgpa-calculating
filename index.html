@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind css ang daisy ui cdn  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class="text-white p-5">
+    <div class="text-center my-5 text-2xl md:text-4xl font-bold underline">
+      <h1>CGPA calculating</h1>
+    </div>
+    <div class="overflow-x-auto ">
+        <table class="table text-center text-lg font-semibold">
+          <!-- head -->
+          <thead>
+            <tr class="md:text-xl text-white">
+              <th>Semester</th>
+              <th>GPA</th>
+              <th>%</th>
+              <th>% GPA</th>
+              <th>Total % GPA</th>
+              <th>Out of</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- row -->
+            <tr>
+              <th>1st</th>
+              <td class="w-20 lg:w-1/6"><input id="input1" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>5%</td>
+              <td id="sem1Percentage">00</td>
+              <td id="sem1PercentageTotal">00</td>
+              <td>0.20</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>2nd</th>
+              <td class="w-20 lg:w-1/6"><input id="input2" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>5%</td>
+              <td id="sem2Percentage">00</td>
+              <td id="sem2PercentageTotal">00</td>
+              <td>0.40</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>3rd</th>
+              <td class="w-20 lg:w-1/6"><input id="input3" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>5%</td>
+              <td  id="sem3Percentage">00</td>
+              <td id="sem3PercentageTotal">00</td>
+              <td>0.60</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>4th</th>
+              <td class="w-20 lg:w-1/6"><input id="input4" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>15%</td>
+              <td id="sem4Percentage">00</td>
+              <td id="sem4PercentageTotal">00</td>
+              <td>1.20</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>5th</th>
+              <td class="w-20 lg:w-1/6"><input id="input5" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>15%</td>
+              <td id="sem5Percentage">00</td>
+              <td id="sem5PercentageTotal">00</td>
+              <td>1.80</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>6th</th>
+              <td class="w-20 lg:w-1/6"><input id="input6" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>20%</td>
+              <td id="sem6Percentage">00</td>
+              <td id="sem6PercentageTotal">00</td>
+              <td>2.60</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>7th</th>
+              <td class="w-20 lg:w-1/6"><input id="input7" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>25%</td>
+              <td id="sem7Percentage">00</td>
+              <td id="sem7PercentageTotal">00</td>
+              <td>3.60</td>
+            </tr>
+            <!-- row -->
+            <tr>
+              <th>8th</th>
+              <td class="w-20 lg:w-1/6"><input id="input8" type="number" class="w-20 lg:w-full h-full m-0 px-3 py-1 focus:ring-2 focus:ring-blue-700 outline-none border-2 focus:border-blue-500 rounded bg-white text-black" min="0" max="4"></td>
+              <td>10%</td>
+              <td id="sem8Percentage">00</td>
+              <td id="sem8PercentageTotal">00</td>
+              <td>4.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="my-5 flex gap-5 justify-center">
+        <button class="btn btn-error" id="reset">Reset</button>
+        <button class="btn btn-success" id="calculate">calculate</button>
+      </div>
+    <script>
+      function reset (input, semPercentage, semPercentageTotal) {
+        document.getElementById(input).value = ''; 
+        document.getElementById(semPercentage).innerText = '00';
+        document.getElementById(semPercentageTotal).innerText = '00';
+      }
+      document.getElementById('reset').addEventListener('click', function() {
+        reset('input1', 'sem1Percentage', 'sem1PercentageTotal');
+        reset('input2', 'sem2Percentage', 'sem2PercentageTotal');
+        reset('input3', 'sem3Percentage', 'sem3PercentageTotal');
+        reset('input4', 'sem4Percentage', 'sem4PercentageTotal');
+        reset('input5', 'sem5Percentage', 'sem5PercentageTotal');
+        reset('input6', 'sem6Percentage', 'sem6PercentageTotal');
+        reset('input7', 'sem7Percentage', 'sem7PercentageTotal');
+        reset('input8', 'sem8Percentage', 'sem8PercentageTotal');
+      })
+
+      function calculate (inputId, semPercentageId , semPercentageTotalId, percentage, inputPercentagePrevious=0) {
+        const input = Number(document.getElementById(inputId).value); 
+        const semPercentage = document.getElementById(semPercentageId);
+        const semPercentageTotal = document.getElementById(semPercentageTotalId);
+        const inputPercentage = input * percentage;
+        semPercentage.innerText = inputPercentage.toFixed(2);
+        const semPercentageTotalValue =inputPercentagePrevious + inputPercentage;
+        semPercentageTotal.innerText = semPercentageTotalValue.toFixed(2);
+        return semPercentageTotalValue;
+      }
+
+      document.getElementById('calculate').addEventListener('click', function() {
+        const total1 = calculate('input1', 'sem1Percentage', 'sem1PercentageTotal', .05);
+        const total2 = calculate('input2', 'sem2Percentage', 'sem2PercentageTotal', .05 , total1);
+        const total3 = calculate('input3', 'sem3Percentage', 'sem3PercentageTotal', .05 , total2);
+        const total4 = calculate('input4', 'sem4Percentage', 'sem4PercentageTotal', .15 , total3);
+        const total5 = calculate('input5', 'sem5Percentage', 'sem5PercentageTotal', .15 , total4);
+        const total6 = calculate('input6', 'sem6Percentage', 'sem6PercentageTotal', .20 , total5);
+        const total7 = calculate('input7', 'sem7Percentage', 'sem7PercentageTotal', .25 , total6);
+        const total8 = calculate('input8', 'sem8Percentage', 'sem8PercentageTotal', .10 , total7);
+      })
+    </script>
+</body>
+</html>
